@@ -5,23 +5,21 @@ from transformers import pipeline
 
 app = FastAPI()
 
-# ✅ Allow frontend (GitHub Pages or anywhere)
+# ✅ CORS to allow from frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Replace with ["https://papgy.github.io"] for tighter security
+    allow_origins=["*"],  # or your GitHub page URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# ✅ Load text generation model
+# ✅ Load text gen model
 generator = pipeline("text-generation", model="distilgpt2")
 
-# ✅ Input schema
 class PromptRequest(BaseModel):
     prompt: str
 
-# ✅ API route
 @app.post("/generate")
 def generate_text(request: PromptRequest):
     result = generator(request.prompt, max_length=100, do_sample=True)
