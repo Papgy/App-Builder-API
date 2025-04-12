@@ -8,7 +8,7 @@ app = FastAPI()
 # ✅ CORS to allow from frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # or your GitHub page URL
+    allow_origins=["https://papgy.github.io"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
