@@ -10,7 +10,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=['https://papgy.github.io'],
     allow_credentials=True,
-    allow_methods=["POST", "GET"],
+    allow_methods=["post", "get"],
     allow_headers=['Access-Control-Allow-Origin', "*"],
 )
 
