@@ -30,3 +30,7 @@ def generate_text(request: PromptRequest):
         pad_token_id=50256  # optional, for GPT-2
     )
     return {"output": result[0]["generated_text"]}
+
+@app.get("/")
+def root():
+    return {"message": "App Builder API running"}
