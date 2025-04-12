@@ -22,5 +22,11 @@ class PromptRequest(BaseModel):
 
 @app.post("/generate")
 def generate_text(request: PromptRequest):
-    result = generator(request.prompt, max_length=100, do_sample=True)
+    result = generator(
+        request.prompt,
+        max_length=100,
+        do_sample=True,
+        truncation=True,
+        pad_token_id=50256  # optional, for GPT-2
+    )
     return {"output": result[0]["generated_text"]}
